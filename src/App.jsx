@@ -1,23 +1,63 @@
-import Navbar from './components/Navbar';
-import TablaCandidatos from './components/TablaCandidatos';
+import { Routes, Route, Navigate } from 'react-router-dom'
+import ProtectedRoute from './components/ProtectedRoute.jsx'
+import AppLayout from './components/AppLayout.jsx'
+import Login from './pages/Login.jsx'
+import Inicio from './pages/Inicio.jsx'
+import Candidatos from './pages/Candidatos.jsx'
+import CandidatoForm from './pages/CandidatoForm.jsx'
+import Solicitudes from './pages/Solicitudes.jsx'
+import SolicitudForm from './pages/SolicitudForm.jsx'
+import SolicitudDetalle from './pages/SolicitudDetalle.jsx'
 
-function App() {
+export default function App() {
   return (
-    <div className="min-vh-100 bg-light">
-      <Navbar />
-      <main className="container py-4">
-        <div className="p-4 bg-white rounded-3 shadow-sm mb-4">
-          <h2 className="h4 text-dark fw-bold mb-1">Proyecto AquaChile</h2>
-          <p className="text-muted mb-0">
-            Bienvenido al sistema de evaluaciones psicolaborales para el área de selección.
-          </p>
-        </div>
-
-        {/* Módulo de candidatos */}
-        <TablaCandidatos />
-      </main>
-    </div>
-  );
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route
+        element={
+          <ProtectedRoute>
+            <AppLayout />
+          </ProtectedRoute>
+        }
+      >
+        <Route index element={<Inicio />} />
+        <Route path="candidatos" element={<Candidatos />} />
+        <Route
+          path="candidatos/nuevo"
+          element={
+            <ProtectedRoute permiso="candidatos:escribir">
+              <CandidatoForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="candidatos/:id/editar"
+          element={
+            <ProtectedRoute permiso="candidatos:escribir">
+              <CandidatoForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="solicitudes" element={<Solicitudes />} />
+        <Route
+          path="solicitudes/nueva"
+          element={
+            <ProtectedRoute permiso="solicitudes:crear">
+              <SolicitudForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="solicitudes/:id/editar"
+          element={
+            <ProtectedRoute permiso="solicitudes:editar">
+              <SolicitudForm />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="solicitudes/:id" element={<SolicitudDetalle />} />
+      </Route>
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
+  )
 }
-
-export default App;
