@@ -1,10 +1,16 @@
+import { Link, NavLink } from 'react-router-dom'
+import Logo from './Logo.jsx'
+
 export default function Navbar() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-3 shadow-sm">
       <div className="container-fluid">
-        <a className="navbar-brand fw-bold" href="#">
-          Proyecto AquaChile
-        </a>
+        <Link className="navbar-brand fw-bold d-flex align-items-center gap-2" to="/">
+          <span className="marca-logo">
+            <Logo alto={30} />
+          </span>
+          <span>Proyecto AquaChile</span>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -16,13 +22,19 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
-              <a className="nav-link active" href="#">Inicio / Dashboard</a>
+              <NavLink end className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/">
+                Inicio / Dashboard
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Candidatos</a>
+              <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/candidatos">
+                Candidatos
+              </NavLink>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Solicitudes</a>
+              <NavLink className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`} to="/solicitudes">
+                Solicitudes
+              </NavLink>
             </li>
           </ul>
         </div>

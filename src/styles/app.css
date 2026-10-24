@@ -47,6 +47,15 @@ body { background: var(--espuma); }
 .sidebar-marca { margin-bottom: 2rem; }
 .marca-nombre { display: block; font-size: 1.4rem; font-weight: 700; letter-spacing: 0.01em; }
 .marca-sub { display: block; font-size: 0.85rem; opacity: 0.7; }
+
+/* ---------- Logo ---------- */
+.logo-aquachile { display: block; width: auto; max-width: 100%; object-fit: contain; }
+.logo-aquachile--oscuro { filter: brightness(0); }
+.marca-logo {
+  display: inline-flex; align-items: center; justify-content: center;
+  max-width: 100%;
+}
+.sidebar-marca .marca-logo { margin-bottom: 0.65rem; }
 .sidebar-nav { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; }
 .sidebar-link {
   color: rgba(255, 255, 255, 0.8); text-decoration: none; padding: 0.6rem 0.8rem;
@@ -105,6 +114,7 @@ body { background: var(--espuma); }
 /* ---------- Login ---------- */
 .login-pagina { min-height: 100vh; display: grid; place-items: center; padding: 1rem; background: linear-gradient(160deg, var(--fiordo) 0%, var(--fiordo-2) 100%); }
 .login-panel { background: #fff; border-radius: 1rem; padding: 2rem; width: 100%; max-width: 420px; }
+.login-marca { display: flex; justify-content: center; margin-bottom: 1.25rem; }
 
 :focus-visible { outline: 3px solid var(--salmon); outline-offset: 2px; }
 @media (prefers-reduced-motion: reduce) { .sidebar { transition: none; } }

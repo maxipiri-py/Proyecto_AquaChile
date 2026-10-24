@@ -3,6 +3,7 @@ import { NavLink, Outlet, useNavigate } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext.jsx'
 import { useData } from '../context/DataContext.jsx'
+import Logo from './Logo.jsx'
 
 // El menú muestra solo lo que le sirve a cada rol.
 const MENU = {
@@ -45,12 +46,17 @@ export default function AppLayout() {
         >
           Menú
         </button>
-        <span className="fw-semibold">AquaChile · Evaluaciones</span>
+        <span className="marca-logo">
+          <Logo alto={28} />
+        </span>
+        <span className="fw-semibold">Evaluaciones</span>
       </header>
 
       <aside className={`sidebar ${abierto ? 'open' : ''}`}>
         <div className="sidebar-marca">
-          <span className="marca-nombre">AquaChile</span>
+          <span className="marca-logo">
+            <Logo alto={60} />
+          </span>
           <span className="marca-sub">Evaluaciones psicolaborales</span>
         </div>
 

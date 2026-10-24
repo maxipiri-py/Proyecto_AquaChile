@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { Alert, Button, Form } from 'react-bootstrap'
 import { useAuth } from '../context/AuthContext.jsx'
+import Logo from '../components/Logo.jsx'
 
 const DEMOS = [
   { rol: 'Analista', correo: 'analista@demo.cl' },
@@ -41,7 +42,10 @@ export default function Login() {
   return (
     <div className="login-pagina">
       <div className="login-panel">
-        <h1 className="h3 mb-1">AquaChile</h1>
+        <h1 className="visually-hidden">AquaChile · Evaluaciones psicolaborales</h1>
+        <div className="login-marca">
+          <Logo alto={92} tono="oscuro" />
+        </div>
         <p className="text-secondary mb-4">Gestión de evaluaciones psicolaborales · Prototipo con datos ficticios</p>
 
         {errorGeneral && <Alert variant="danger">{errorGeneral}</Alert>}

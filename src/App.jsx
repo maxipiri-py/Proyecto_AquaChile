@@ -1,13 +1,16 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 import AppLayout from './components/AppLayout.jsx'
-import Login from './pages/Login.jsx'
-import Inicio from './pages/Inicio.jsx'
-import Candidatos from './pages/Candidatos.jsx'
-import CandidatoForm from './pages/CandidatoForm.jsx'
-import Solicitudes from './pages/Solicitudes.jsx'
-import SolicitudForm from './pages/SolicitudForm.jsx'
-import SolicitudDetalle from './pages/SolicitudDetalle.jsx'
+import {
+  Login,
+  Inicio,
+  Candidatos,
+  CandidatoForm,
+  Solicitudes,
+  SolicitudForm,
+  SolicitudDetalle,
+  NoEncontrada,
+} from './pages/index.js'
 
 export default function App() {
   return (
@@ -56,6 +59,7 @@ export default function App() {
           }
         />
         <Route path="solicitudes/:id" element={<SolicitudDetalle />} />
+        <Route path="*" element={<NoEncontrada />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
