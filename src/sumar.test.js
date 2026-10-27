@@ -1,4 +1,3 @@
-// sumar.test.js
 import { expect, test } from "vitest";
 import { sumar } from "./sumar";
 
